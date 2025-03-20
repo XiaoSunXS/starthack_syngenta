@@ -25,11 +25,11 @@ const getColorClass = (state: string): string => {
   }
 }
 
-const CheckDataComponent = ({ checkData, setCheckCrop = ()=>{}}: { checkData: CheckData, setCheckCrop?:Dispatch<SetStateAction<string | null>> }) => {
+const CheckDataComponent = ({ checkData, setSelectedCrop, selectedCrop}: { checkData: CheckData, setSelectedCrop:Dispatch<SetStateAction<string | null>> , selectedCrop: string | null}) => {
   return (
     <Card 
       className={`my-4 py-0 bg-light rounded-lg border-0 shadow-sm overflow-hidden ${getColorClass(checkData.score)}`}
-      onClick={()=> setCheckCrop(checkData.crop)}
+      onClick={()=> {if(selectedCrop == null) {setSelectedCrop(checkData.crop)} else {setSelectedCrop(null)}}}
       >
       <div className="flex flex-row items-center">
         <div className="flex-grow">
@@ -51,9 +51,18 @@ const CheckDataComponent = ({ checkData, setCheckCrop = ()=>{}}: { checkData: Ch
     </Card>
 )};
 
-const CropSpecificCheck = ({checkData}:{checkData:CheckData}) =>
+const CropSpecificCheck = ({checkData, selectedCrop, setSelectedCrop}:{checkData:CheckData,setSelectedCrop:Dispatch<SetStateAction<string | null>> , selectedCrop: string}) =>
   <div>
-   <CheckDataComponent checkData={checkData}/>
+   <CheckDataComponent checkData={checkData} selectedCrop={selectedCrop} setSelectedCrop={setSelectedCrop}/>
+   {checkData.score == 'Good' && <p className="text-lg pt-6 pl-2">🙂 Your crop looks great! </p>}
+   {checkData.score == 'Medium' && <p className="text-lg pt-6 pl-2">😳 Your crop is doing okay, but could use some attention. </p>}
+   {checkData.score == 'Poor' && 
+      <div className="text-lg pt-4 pl-2">
+       <p className="py-4">1. More water required 💧</p>  
+       <p className="py-4">2. Add 10g of Provivi</p>  
+       <p className="py-4">3. No need for heavy pesticide use unless pest pressure rises</p>  
+      </div>}
+
   </div>
 
 
@@ -61,7 +70,7 @@ export default function Page() {
   const [data, setData] = useState<FarmersData | null>(null);
   const [error, setError] = useState(null);
 
-  const [checkCrop, setCheckCrop] = useState<string | null>(null);
+  const [selectedCrop, setSelectedCrop] = useState<string | null>(null);
   
   useEffect(() => {
     fetch("/api/users")  // Ensure this matches the API route
@@ -87,19 +96,19 @@ export default function Page() {
   }
 
   const checkData = data.farmers[0].checkData;
-  const cropCheckData = checkData.find((v)=>v.crop === checkCrop) ?? checkData[0];
+  const cropCheckData = checkData.find((v)=>v.crop === selectedCrop) ?? checkData[0];
 
-  if (checkCrop == null) {
+  if (selectedCrop == null) {
     return (
     <div>
       {checkData.map((v, i) => (
-        <CheckDataComponent key={`checkData-card-${i}`} checkData={v} setCheckCrop={setCheckCrop}/>
+        <CheckDataComponent key={`checkData-card-${i}`} checkData={v} selectedCrop={selectedCrop} setSelectedCrop={setSelectedCrop}/>
       ))}
     </div>
   );
   }
 
   return (
-    <CropSpecificCheck checkData={cropCheckData}/>
+    <CropSpecificCheck checkData={cropCheckData} selectedCrop={selectedCrop} setSelectedCrop={setSelectedCrop} />
   );
 }
