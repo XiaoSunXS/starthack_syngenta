@@ -60,24 +60,26 @@ export const SummarySection = ({
       {/* Soil Health Card */}
       {soilData && (
         <div>
-          <h2 className="text-xl font-medium mb-3">Soil Health</h2>
-          <div className="bg-amber-600 rounded-xl p-4 text-white flex justify-between items-center">
+            <h2 className="text-xl font-medium mb-3">Soil Health</h2>
+            <div className="bg-amber-600 rounded-xl p-4 text-white flex justify-between items-center">
             <div>
-              <div className="text-6xl font-semibold">80%</div>
-              <div className="mt-2">Excellent</div>
+                <div className="text-6xl font-semibold">80%</div>
+                <div className="mt-2">Excellent</div>
             </div>
             <div className="flex items-center justify-center">
-              <div className="w-16 h-16 flex items-center justify-center">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="#4CAF50" fillOpacity="0.3" stroke="white" strokeWidth="1.5"/>
-                  <path d="M12 16C12 16 16 12.4183 16 9C16 5.58172 12 7 12 7C12 7 8 5.58172 8 9C8 12.4183 12 16 12 16Z" fill="#4CAF50" stroke="white" strokeWidth="1.5"/>
-                  <path d="M15 17C15 14.2386 13.7614 13 11 13C8.23858 13 7 14.2386 7 17" stroke="white" strokeWidth="1.5"/>
-                </svg>
-              </div>
+                <div className="w-16 h-16 flex items-center justify-center">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                    src="https://img.freepik.com/free-vector/hand-giving-growing-plant_78370-855.jpg" 
+                    alt="Soil Health Icon" 
+                    className="w-full h-full object-cover rounded-full"
+                />
+                </div>
             </div>
-          </div>
+            </div>
         </div>
-      )}
+        )}
+
       
       {/* Risk Card */}
       <div>
