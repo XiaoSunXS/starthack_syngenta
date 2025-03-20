@@ -7,13 +7,16 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { Thermometer, Droplets, Wind, AlertTriangle } from "lucide-react";
 import { fetchDiseaseRisk, fetchSoilData, fetchWeatherData } from '../helpers/getMockData';
 import { getRiskColor } from '../helpers/getRiskColor';
+import { Disease, Soil, Weather } from '../helpers/types';
 
 const FarmRiskDashboard = () => {
   // State management
   const [location, setLocation] = useState({ lat: 47.558399, lng: 7.57327 }); // Default: Basel
-  const [weatherData, setWeatherData] = useState(null);
-  const [soilData, setSoilData] = useState(null);
-  const [diseaseRisk, setDiseaseRisk] = useState(null);
+
+  const [weatherData, setWeatherData] = useState<Weather[]>([]);
+  const [soilData, setSoilData] = useState<Soil>();
+  const [diseaseRisk, setDiseaseRisk] = useState<Disease>();
+
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('weather');
 
@@ -37,7 +40,6 @@ const FarmRiskDashboard = () => {
         setLoading(false);
       }
     };
-
     loadData();
   }, [location]);
 
@@ -76,7 +78,7 @@ const FarmRiskDashboard = () => {
         </Card>
 
         {/* Soil Summary Card */}
-        <Card>
+        {!!soilData && <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">Soil Condition</CardTitle>
           </CardHeader>
@@ -87,14 +89,14 @@ const FarmRiskDashboard = () => {
               <p><strong>Moisture (0-10cm):</strong> {soilData.moisture[0].value}%</p>
             </div>
           </CardContent>
-        </Card>
+        </Card>}
 
         {/* Disease Risk Summary Card */}
         <Card>
           <CardHeader className="pb-2">
             <CardTitle className="text-lg">Disease Risk</CardTitle>
           </CardHeader>
-          <CardContent>
+          {!!diseaseRisk && <CardContent>
             <div className="flex items-center">
               <AlertTriangle className={`mr-2 ${getRiskColor(diseaseRisk.diseases[0].riskLevel)}`} />
               <span className="font-semibold">Primary Risk: {diseaseRisk.diseases[0].name}</span>
@@ -102,7 +104,7 @@ const FarmRiskDashboard = () => {
             <p className={`mt-1 ${getRiskColor(diseaseRisk.diseases[0].riskLevel)}`}>
               Risk Level: {diseaseRisk.diseases[0].riskLevel}
             </p>
-          </CardContent>
+          </CardContent>}
         </Card>
       </div>
 
@@ -168,7 +170,7 @@ const FarmRiskDashboard = () => {
             <CardHeader>
               <CardTitle>Soil Analysis</CardTitle>
             </CardHeader>
-            <CardContent>
+            {!!soilData && <CardContent>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h3 className="font-semibold mb-3">Soil Profile</h3>
@@ -218,12 +220,12 @@ const FarmRiskDashboard = () => {
                   </div>
                 </div>
               </div>
-            </CardContent>
+            </CardContent>}
           </Card>
         </TabsContent>
 
         <TabsContent value="disease">
-          <Card>
+          {!!diseaseRisk && <Card>
             <CardHeader>
               <CardTitle>Disease Risk Analysis for {diseaseRisk.crop}</CardTitle>
             </CardHeader>
@@ -286,7 +288,7 @@ const FarmRiskDashboard = () => {
                 </div>
               </div>
             </CardContent>
-          </Card>
+          </Card>}
         </TabsContent>
       </Tabs>
     </div>
