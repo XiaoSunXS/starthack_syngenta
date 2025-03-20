@@ -9,8 +9,9 @@ export default function ReelsPage() {
   
   // Video sources
   const videos = [
+    '/video2.mp4',
     '/video1.mp4',
-    '/video2.mp4'
+    '/video3.mp4'
   ];
   
   // Function to cycle to the next video
