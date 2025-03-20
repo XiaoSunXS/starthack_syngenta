@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FarmersData, CheckData } from "../helpers/types";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
@@ -25,9 +25,12 @@ const getColorClass = (state: string): string => {
   }
 }
 
-const HistoryCard = ({ checkData }: { checkData: CheckData }) => {
+const CheckDataComponent = ({ checkData, setCheckCrop = ()=>{}}: { checkData: CheckData, setCheckCrop?:Dispatch<SetStateAction<string | null>> }) => {
   return (
-    <Card className={`my-4 py-0 bg-light rounded-lg border-0 shadow-sm overflow-hidden ${getColorClass(checkData.score)}`}>
+    <Card 
+      className={`my-4 py-0 bg-light rounded-lg border-0 shadow-sm overflow-hidden ${getColorClass(checkData.score)}`}
+      onClick={()=> setCheckCrop(checkData.crop)}
+      >
       <div className="flex flex-row items-center">
         <div className="flex-grow">
           <CardHeader className="font-bold text-xl text-primary pb-0 text-white">{checkData.crop}</CardHeader>
@@ -47,9 +50,18 @@ const HistoryCard = ({ checkData }: { checkData: CheckData }) => {
       </div>
     </Card>
 )};
+
+const CropSpecificCheck = ({checkData}:{checkData:CheckData}) =>
+  <div>
+   <CheckDataComponent checkData={checkData}/>
+  </div>
+
+
 export default function Page() {
   const [data, setData] = useState<FarmersData | null>(null);
   const [error, setError] = useState(null);
+
+  const [checkCrop, setCheckCrop] = useState<string | null>(null);
   
   useEffect(() => {
     fetch("/api/users")  // Ensure this matches the API route
@@ -75,12 +87,19 @@ export default function Page() {
   }
 
   const checkData = data.farmers[0].checkData;
+  const cropCheckData = checkData.find((v)=>v.crop === checkCrop) ?? checkData[0];
 
-  return (
+  if (checkCrop == null) {
+    return (
     <div>
       {checkData.map((v, i) => (
-        <HistoryCard key={`checkData-card-${i}`} checkData={v} />
+        <CheckDataComponent key={`checkData-card-${i}`} checkData={v} setCheckCrop={setCheckCrop}/>
       ))}
     </div>
+  );
+  }
+
+  return (
+    <CropSpecificCheck checkData={cropCheckData}/>
   );
 }
