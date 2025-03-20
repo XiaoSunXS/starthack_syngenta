@@ -11,15 +11,9 @@ const getPicture = (crop: string)=>{
   return 'wheat.jpg';
 }
 
-// const getBackgroundColor = (crop: string)=>{
-//   if (crop == 'Rice') return 'rice.jpg';
-//   if (crop == 'Cotton') return 'cotton.jpeg';
-  
-//   return 'wheat.jpg';
-// }
-
-const HistoryCard = ({ history }: { history: HistoryData }) => (
-  <Card className="my-4 bg-light rounded shadow-sm overflow-hidden">
+const HistoryCard = ({ history }: { history: HistoryData }) => {
+  return (
+  <Card className="my-4 bg-light rounded shadow-sm overflow-hidden border-0 bg-gray-100">
     <div className="flex flex-row items-stretch">
       <div className="flex-grow">
         <CardHeader className="font-bold text-xl text-primary">{history.crop}</CardHeader>
@@ -27,8 +21,8 @@ const HistoryCard = ({ history }: { history: HistoryData }) => (
           <div>Applied <strong>{history.amount}%</strong> {history.biologicals} on {history.date}</div>
         </CardContent>
       </div>
-      <div className="w-20 h-auto flex items-center justify-center bg-gray-100">
-        <div className="w-16 h-16 rounded-full overflow-hidden flex items-center justify-center">
+      <div className="w-30 h-auto flex items-center justify-center px-2">
+        <div className="w-26 h-26 rounded-full overflow-hidden flex items-center justify-center border-3 border-white bg-gray-100">
           <img 
             src={getPicture(history.crop)}
             alt={`${history.crop} image`} 
@@ -38,7 +32,7 @@ const HistoryCard = ({ history }: { history: HistoryData }) => (
       </div>
     </div>
   </Card>
-);
+)};
 export default function Page() {
   const [data, setData] = useState<FarmersData | null>(null);
   const [error, setError] = useState(null);
