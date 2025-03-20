@@ -1,53 +1,110 @@
 "use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@radix-ui/react-avatar";
-import { Badge, Globe, Languages, Leaf, MapPin } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Globe, Languages, Leaf, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Farmer, FarmersData } from "../helpers/types";
-
 export function FarmerProfile({ farmer }: { farmer: Farmer }) {
   return (
-    <Card className="w-full">
-      <CardContent className="pt-6">
-        <div className="flex flex-col gap-4">          
-          <h2 className="text-lg font-medium">{farmer.first_name} {farmer.last_name}</h2>
-          
-          <div className="grid grid-cols-3 gap-6 w-full mt-2">
-            <div className="flex flex-col items-center">
-              <MapPin className="h-5 w-5 text-gray-500" />
-              <span className="text-xs mt-1">{farmer.location}</span>
+    <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
+      <h1 className="text-lg font-bold mb-6">Your Farm Information</h1>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {/* Personal Information */}
+        <div className="col-span-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Name</label>
+              <input
+                type="text"
+                value={`${farmer.first_name} ${farmer.last_name}`}
+                disabled
+                className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
+              />
             </div>
-            
-            <div className="flex flex-col items-center">
-              <Globe className="h-5 w-5 text-gray-500" />
-              <span className="text-xs mt-1">{farmer.country}</span>
-            </div>
-            
-            <div className="flex flex-col items-center">
-              <Languages className="h-5 w-5 text-gray-500" />
-              <span className="text-xs mt-1">{farmer.language}</span>
-            </div>
-          </div>
-          
-          <div className="w-full mt-4 border-t pt-4">
-            <div className="flex items-center gap-2 mb-2">
-              <Leaf className="h-4 w-4 text-green-600" />
-              <span className="text-sm">Crops</span>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-2">
-              {farmer.crops.map((crop, index) => (
-                <div key={index} className="bg-gray-50 rounded p-2 text-center">
-                  <div className="text-sm">{crop.name}</div>
-                  <div className="text-xs text-gray-500">{crop.area_hectare} ha</div>
-                </div>
-              ))}
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Language</label>
+              <input
+                type="text"
+                value={farmer.language}
+                disabled
+                className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
+              />
             </div>
           </div>
         </div>
-      </CardContent>
-    </Card>
+
+        {/* Location Information */}
+        <div className="col-span-2">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Location</label>
+            <input
+              type="text"
+              value={`${farmer.location}, ${farmer.country}`}
+              disabled
+              className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Farming Method */}
+        <div className="col-span-2 md:col-span-1">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">Farming Method</label>
+            <select
+              className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
+              value={farmer.farming_method}
+            >
+              <option>{farmer.farming_method}</option>
+              <option>Conventional</option>
+              <option>Organic</option>
+              <option>Regenerative</option>
+              <option>Biodynamic</option>
+            </select>
+          </div>
+        </div>
+
+        {/* Farm Size */}
+        <div className="col-span-2 md:col-span-1">
+          <label className="block text-sm font-medium text-gray-700">Farm Size (hectares)</label>
+          <div>
+            <input
+              type="number"
+              value={farmer.crops.reduce((sum, crop) => sum + crop.area_hectare, 0).toFixed(2)}
+              className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
+            />
+          </div>
+        </div>
+
+        {/* Crops */}
+        <div className="col-span-2">
+          <label className="block text-sm font-medium text-gray-700">Crops</label>
+          <div className="border rounded-md p-4 bg-gray-50">
+            {farmer.crops.length > 0 ? (
+              <div className="space-y-4">
+                {farmer.crops.map((crop, index) => (
+                  <div key={index} className="flex items-center justify-between p-2 bg-white rounded">
+                    <span className="font-medium">{crop.name}</span>
+                    <span>{crop.area_hectare} hectares</span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <p className="text-gray-500">No crops added yet</p>
+            )}
+            <div className="mt-4">
+              <button
+                type="button"
+                className="px-4 py-2 bg-[var(--header-bg)] text-white rounded-md"
+                onChange={()=>{}}
+              >
+                Add Crop
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
 

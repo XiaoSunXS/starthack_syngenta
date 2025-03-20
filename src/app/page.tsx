@@ -53,15 +53,10 @@ const FarmRiskDashboard = () => {
   }
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">
-        Farm Risk Visualization Dashboard
-      </h1>
       <SummarySection
         soilData={soilData}
         weatherData={weatherData}
       />
-    </div>
   );
 };
 

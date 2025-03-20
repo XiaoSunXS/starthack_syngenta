@@ -8,6 +8,7 @@
       "longitude": 82.9739,
       "country": "India",
       "language": "Hindi",
+      "farming_method": "Organic",
       "crops": [
         {
           "name": "Wheat",
@@ -27,6 +28,7 @@
       "longitude": 73.8567,
       "country": "India",
       "language": "Marathi",
+      "farming_method": "Organic",
       "crops": [
         {
           "name": "Rice",
@@ -46,6 +48,7 @@
       "longitude": 85.1376,
       "country": "India",
       "language": "Hindi",
+      "farming_method": "Organic",
       "crops": [
         {
           "name": "Maize",
@@ -65,6 +68,7 @@
       "longitude": 75.7873,
       "country": "India",
       "language": "Rajasthani",
+      "farming_method": "Organic",
       "crops": [
         {
           "name": "Bajra",
@@ -84,6 +88,7 @@
       "longitude": 78.4867,
       "country": "India",
       "language": "Telugu",
+      "farming_method": "Organic",
       "crops": [
         {
           "name": "Cotton",

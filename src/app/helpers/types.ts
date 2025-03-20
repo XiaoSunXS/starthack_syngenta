@@ -55,6 +55,7 @@ export type Farmer = {
     longitude: number;
     country: string;
     language: string;
+    farming_method: string;
     crops: Crop[];
 };
 
