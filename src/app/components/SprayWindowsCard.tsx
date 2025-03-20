@@ -216,28 +216,21 @@ export const SprayWindowsCard = ({ location }: { location: Location }) => {
         )}
 
         <div className="mt-4 text-sm">
-          <div className="font-medium mb-2">Spray Conditions</div>
+          <div className="font-bold mb-2">Spray Conditions</div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="flex items-center">
-              <div className="w-4 h-4 bg-green-200 rounded mr-2"></div>
-              <span className="flex items-center">
-                <span className="mr-1">✅</span> 
-                <span>Excellent</span>
-              </span>
-            </div>
-            <div className="flex items-center">
-              <div className="w-4 h-4 bg-yellow-200 rounded mr-2"></div>
-              <span className="flex items-center">
-                <span className="mr-1">🙂</span> 
-                <span>Good</span>
-              </span>
-            </div>
-            <div className="flex items-center">
-              <div className="w-4 h-4 bg-red-200 rounded mr-2"></div>
-              <span className="flex items-center">
-                <span className="mr-1">❌</span> 
-                <span>Poor</span>
-              </span>
+            <div className="flex gap-4">
+              <div className="flex items-center">
+                <div className="w-4 h-4 bg-green-200 rounded mr-2"></div>
+                <span>✅ Excellent</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-4 h-4 bg-yellow-200 rounded mr-2"></div>
+                <span>🙂 Good</span>
+              </div>
+              <div className="flex items-center">
+                <div className="w-4 h-4 bg-red-200 rounded mr-2"></div>
+                <span>❌ Poor</span>
+              </div>
             </div>
           </div>
         </div>
