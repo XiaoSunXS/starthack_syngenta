@@ -2,104 +2,108 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function GET(request: NextRequest) {
-    console.log('inside GET of weather.ts');
-    try {
-        const searchParams = request.nextUrl.searchParams;
-        const latitude = searchParams.get('latitude');
-        const longitude = searchParams.get('longitude');
-        const startDate = searchParams.get('startDate');
-        const endDate = searchParams.get('endDate');
+  console.log('inside GET of weather.ts');
+  try {
+    const searchParams = request.nextUrl.searchParams;
+    const latitude = searchParams.get('latitude');
+    const longitude = searchParams.get('longitude');
+    const startDate = searchParams.get('startDate');
+    const endDate = searchParams.get('endDate');
 
-        console.log({
-        latitude,
-        longitude,
-        startDate,
-        endDate
-        });
+    console.log({
+      latitude,
+      longitude,
+      startDate,
+      endDate
+    });
 
-        if (!latitude || !longitude || !startDate || !endDate) {
-        return NextResponse.json(
-            { error: 'Missing required parameters' },
-            { status: 400 }
-        );
-        }
-
-        const FORECAST_API_KEY = process.env.NEXT_PUBLIC_CEHUB_FORECAST_API_KEY;
-        const BASE_URL = process.env.NEXT_PUBLIC_CEHUB_BASE_URL;
-
-        // Get all the measures we want from the API
-        const measures = [
-        'TempAir_DailyAvg',
-        'TempAir_DailyMax',
-        'TempAir_DailyMin',
-        'Precip_DailySum',
-        'HumidityRel_DailyAvg',
-        'WindSpeed_DailyAvg',
-        'WindDirection_DailyAvg',
-        'CloudCover_DailyAvg'
-        ].join(';');
-
-        // Construct URL WITHOUT the API key in the query parameters
-        const url = `${BASE_URL}/Forecast/ShortRangeForecastDaily?latitude=${latitude}&longitude=${longitude}&startDate=${startDate}&endDate=${endDate}&supplier=Meteoblue&measureLabel=${measures}&top=20&format=json`;
-        
-        console.log('At weather route, Fetching from URL:', url);
-        
-        // Pass the API key as a header instead
-        const response = await fetch(url, {
-        headers: {
-            'ApiKey': FORECAST_API_KEY || '',
-            'Accept': '*/*'
-        }
-        });
-        
-        console.log('API status:', response.status);
-        
-        if (!response.ok) {
-        throw new Error(`Weather API responded with status: ${response.status}`);
-        }
-        
-        const data = await response.json();
-        
-        // Process the data to match what your component expects
-        const processedData = processWeatherData(data);
-        console.log('Weather API Processed data first 50 chars:', JSON.stringify(processedData).slice(0, 50));
-        
-        return NextResponse.json(processedData);
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        return NextResponse.json(
-        { error: 'Failed to fetch weather data' },
-        { status: 500 }
-        );
-    }
+    if (!latitude || !longitude || !startDate || !endDate) {
+      return NextResponse.json(
+        { error: 'Missing required parameters' },
+        { status: 400 }
+      );
     }
 
-    // Process the weather data to match the expected format
-    function processWeatherData(rawData: any[]) {
-    if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
-        return [];
+    const FORECAST_API_KEY = process.env.NEXT_PUBLIC_CEHUB_FORECAST_API_KEY;
+    const BASE_URL = process.env.NEXT_PUBLIC_CEHUB_BASE_URL;
+
+    // Get all the measures we want from the API - include units in the labels
+    const measures = [
+      'TempAir_DailyAvg (C)',
+      'TempAir_DailyMax (C)',
+      'TempAir_DailyMin (C)',
+      'Precip_DailySum (mm)',
+      'HumidityRel_DailyAvg (pct)',
+      'WindSpeed_DailyAvg (m/s)',
+      'WindDirection_DailyAvg (Deg)',
+      'CloudCover_DailyAvg (pct)'
+    ].join(';');
+
+    // Construct URL WITHOUT the API key in the query parameters
+    const url = `${BASE_URL}/Forecast/ShortRangeForecastDaily?latitude=${latitude}&longitude=${longitude}&startDate=${startDate}&endDate=${endDate}&supplier=Meteoblue&measureLabel=${measures}&top=20&format=json`;
+    
+    console.log('At weather route, Fetching from URL:', url);
+    
+    // Pass the API key as a header instead
+    const response = await fetch(url, {
+      headers: {
+        'ApiKey': FORECAST_API_KEY || '',
+        'Accept': '*/*'
+      }
+    });
+    
+    console.log('API status:', response.status);
+    
+    if (!response.ok) {
+      throw new Error(`Weather API responded with status: ${response.status}`);
     }
     
-    // Group by date first
-    const groupedByDate = rawData.reduce((acc: any, item: any) => {
-        // Format date string to YYYY-MM-DD
-        const date = formatDate(item.date);
-        
-        if (!acc[date]) {
-        acc[date] = {};
-        }
-        
-        // Extract measure name without units
-        const label = item.measureLabel.split(' ')[0];
-        acc[date][label] = parseFloat(item.dailyValue);
-        
-        return acc;
-    }, {});
+    const data = await response.json();
+    console.log('Raw response first item:', data.length > 0 ? data[0] : 'No data');
     
-    // Convert to array format expected by the component
-    return Object.keys(groupedByDate)
-        .sort() // Sort dates chronologically
-        .map(date => {
+    // Process the data to match what your component expects
+    const processedData = processWeatherData(data);
+    console.log('Weather API Processed data first 50 chars:', JSON.stringify(processedData).slice(0, 50));
+    
+    return NextResponse.json(processedData);
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+    return NextResponse.json(
+      { error: 'Failed to fetch weather data' },
+      { status: 500 }
+    );
+  }
+}
+
+// Process the weather data to match the expected format
+function processWeatherData(rawData: any[]) {
+  if (!rawData || !Array.isArray(rawData) || rawData.length === 0) {
+    return [];
+  }
+  
+  // Group by date first
+  const groupedByDate = rawData.reduce((acc: any, item: any) => {
+    // Format date string to YYYY-MM-DD
+    const date = formatDate(item.date);
+    
+    if (!acc[date]) {
+      acc[date] = {};
+    }
+    
+    // Extract measure name - handle full label format
+    const measureParts = item.measureLabel.split(' (');
+    const measureName = measureParts[0];
+    
+    // Store the value, ensuring it's parsed as a number
+    acc[date][measureName] = parseFloat(item.dailyValue) || 0;
+    
+    return acc;
+  }, {});
+  
+  // Convert to array format expected by the component
+  return Object.keys(groupedByDate)
+    .sort() // Sort dates chronologically
+    .map(date => {
       const dayData = groupedByDate[date];
       
       return {
