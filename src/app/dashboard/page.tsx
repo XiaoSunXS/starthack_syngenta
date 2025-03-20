@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+// TODO: define components in the components folder OR use shadcn/ui
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { Thermometer, Droplets, Wind, CloudRain, AlertTriangle } from "lucide-react";
+import { Thermometer, Droplets, Wind,  AlertTriangle } from "lucide-react";
 
 const FarmRiskDashboard = () => {
   // State management
