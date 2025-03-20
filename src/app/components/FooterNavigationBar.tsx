@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import {
     NavigationMenu,
     NavigationMenuItem,
@@ -6,6 +7,7 @@ import {
     navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { BookCheck, CircleUser, Home, ShieldAlert } from "lucide-react";
 import Link from "next/link";
 
 export const FooterNavigationBar = ({}:{})=>       
@@ -13,43 +15,31 @@ export const FooterNavigationBar = ({}:{})=>
           <NavigationMenu className="mx-auto">
             <NavigationMenuList className="flex justify-around w-full">
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-gray-100 px-3"
-                  )}>
-                    Home
-                  </NavigationMenuLink>
+               <Link href="/">
+               <Button variant="ghost" size="icon" className="h-12 w-12">
+                    <Home className="h-6 w-6" />
+                </Button>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/products" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-gray-100 px-3"
-                  )}>
-                    Products
-                  </NavigationMenuLink>
+                 <Button variant="ghost" size="icon" className="h-12 w-12">
+                    <ShieldAlert className="h-6 w-6" />
+                </Button>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/services" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-gray-100 px-3"
-                  )}>
-                    Services
-                  </NavigationMenuLink>
+                 <Button variant="ghost" size="icon" className="h-12 w-12">
+                    <BookCheck className="h-6 w-6" />
+                </Button>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
                 <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={cn(
-                    navigationMenuTriggerStyle(),
-                    "bg-transparent hover:bg-gray-100 px-3"
-                  )}>
-                    Contact
-                  </NavigationMenuLink>
+                <Button variant="ghost" size="icon" className="h-12 w-12">
+                    <CircleUser className="h-6 w-6" />
+                </Button>
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
