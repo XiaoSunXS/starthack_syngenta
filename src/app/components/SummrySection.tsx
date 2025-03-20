@@ -3,14 +3,22 @@ import { AlertTriangle } from "lucide-react";
 import { Soil, Weather } from '../helpers/types';
 import { calculateRiskLevel, getWeatherIcon } from "./WeatherUtils";
 
-export const SummarySection = ({ weatherData, soilData }: { weatherData: Weather[], soilData?: Soil }) => {
+export const SummarySection = ({ 
+  weatherData, 
+  soilData,
+  farmerLocation = "Punjab, India" // Default to Punjab, India if no location provided
+}: { 
+  weatherData: Weather[], 
+  soilData?: Soil,
+  farmerLocation?: string
+}) => {
   if (!weatherData || weatherData.length === 0) {
     return <div>No weather data available</div>;
   }
 
   const currentWeather = weatherData[0];
   const riskData = calculateRiskLevel(weatherData);
-console.log({riskData})
+  
   return (
     <div className="px-4 py-6 space-y-6">
       {/* Location Search */}
@@ -18,9 +26,9 @@ console.log({riskData})
         <span className="mr-2 text-gray-500">📍</span>
         <input 
           type="text" 
-          placeholder="Punjab, India" 
+          placeholder="Location" 
           className="bg-transparent w-full outline-none"
-          value="Punjab, India"
+          value={farmerLocation}
           readOnly
         />
       </div>
@@ -34,7 +42,7 @@ console.log({riskData})
             <div className="text-sm mt-1">
               H:{Math.round(currentWeather.temperatureMax)}° L:{Math.round(currentWeather.temperatureMin)}°
             </div>
-            <div className="mt-2">Punjab, India</div>
+            <div className="mt-2">{farmerLocation}</div>
           </div>
           <div className="text-center">
             <div className="flex flex-col items-center">
@@ -92,7 +100,7 @@ console.log({riskData})
 };
 
 // Helper function to determine weather condition based on API data
-function getWeatherCondition(weather) {
+function getWeatherCondition(weather: Weather) {
   const { precipitation, cloudCover, temperature } = weather;
   
   if (precipitation > 10) return "Heavy Rain";
