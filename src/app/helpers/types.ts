@@ -1,3 +1,8 @@
+export type Location = {
+    lat: number;
+    lng: number;
+}
+
 export type Weather = {
     date: string;
     temperature: number;

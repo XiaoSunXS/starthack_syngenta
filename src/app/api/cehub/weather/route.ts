@@ -59,11 +59,10 @@ export async function GET(request: NextRequest) {
         }
         
         const data = await response.json();
-        console.log('Raw API response:', data);
         
         // Process the data to match what your component expects
         const processedData = processWeatherData(data);
-        console.log('Processed data:', processedData);
+        console.log('Weather API Processed data first 50 chars:', JSON.stringify(processedData).slice(0, 50));
         
         return NextResponse.json(processedData);
     } catch (error) {

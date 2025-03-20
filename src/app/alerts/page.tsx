@@ -8,10 +8,14 @@ import {
   fetchDiseaseRisk,
 } from "../helpers/getMockData";
 import { Weather, Soil, Disease } from "../helpers/types";
+import { CHHATTISGARH_LOCATION } from "../helpers/constants";
+
+
 
 export default function Page() {
   // State management
-  const [location, setLocation] = useState({ lat: 47.558399, lng: 7.57327 }); // Default: Basel
+  const [location, setLocation] = useState(CHHATTISGARH_LOCATION); // Default: Chhattisgarh
+  const [date, setDate] = useState(new Date());
 
   const [weatherData, setWeatherData] = useState<Weather[]>([]);
   const [soilData, setSoilData] = useState<Soil>();
@@ -26,9 +30,9 @@ export default function Page() {
       setLoading(true);
       try {
         const [weather, soil, disease] = await Promise.all([
-          fetchWeatherData(),
-          fetchSoilData(),
-          fetchDiseaseRisk(),
+          fetchWeatherData({date, location}),
+          fetchSoilData({date, location}),
+          fetchDiseaseRisk({date, location}),
         ]);
 
         setWeatherData(weather);

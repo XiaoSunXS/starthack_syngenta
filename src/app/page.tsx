@@ -3,35 +3,37 @@
 import { useEffect, useState } from "react";
 import { AnalysisSection } from "./components/AnalysisSection";
 import { SummarySection } from "./components/SummrySection";
-import { fetchDiseaseRisk, fetchSoilData } from './helpers/getMockData';
 import { fetchWeatherData } from './helpers/getData';
-import { Disease, Soil, Weather } from './helpers/types';
+import { Soil, Weather } from './helpers/types';
+import { CHHATTISGARH_LOCATION } from "./helpers/constants";
+import { fetchSoilData } from "./helpers/getMockData";
 
 const FarmRiskDashboard = () => {
   // State management
-  const [location, setLocation] = useState({ lat: 47.558399, lng: 7.57327 }); // Default: Basel
+  const [location, setLocation] = useState(CHHATTISGARH_LOCATION); // Default: Chhattisgarh
 
   const [weatherData, setWeatherData] = useState<Weather[]>([]);
   const [soilData, setSoilData] = useState<Soil>();
-  const [diseaseRisk, setDiseaseRisk] = useState<Disease>();
 
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState("weather");
 
   // Load data when component mounts
   useEffect(() => {
+    console.log('inside useEffect TODO loadData');
     const loadData = async () => {
       setLoading(true);
       try {
-        const [weather, soil, disease] = await Promise.all([
+        const [weather, soil] = await Promise.all([
           fetchWeatherData(),
           fetchSoilData(),
-          fetchDiseaseRisk(),
         ]);
+
+        console.log('weather', weather);
+        console.log('soil', soil);
 
         setWeatherData(weather);
         setSoilData(soil);
-        setDiseaseRisk(disease);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
@@ -39,6 +41,7 @@ const FarmRiskDashboard = () => {
       }
     };
     loadData();
+    console.log('post loadData, location:', location);
   }, [location]);
 
   if (loading) {
@@ -57,7 +60,6 @@ const FarmRiskDashboard = () => {
       <SummarySection
         soilData={soilData}
         weatherData={weatherData}
-        diseaseRisk={diseaseRisk}
       />
     </div>
   );
