@@ -49,7 +49,7 @@ export type Crop = {
 
 export type CheckData = {
     crop: string,
-    score: number
+    score: string
 }
 
 export type Farmer = {

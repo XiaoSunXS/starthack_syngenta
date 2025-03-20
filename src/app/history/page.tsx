@@ -12,16 +12,27 @@ const getPicture = (crop: string)=>{
 }
 
 
-const formatToPercent = (score: number) => `${score*100} %`
+const getColorClass = (state: string): string => {
+  switch(state) {
+    case "Good":
+      return "bg-[#0A6312]";
+    case "Medium":
+      return "bg-[#63B9FF]";
+    case "Poor":
+      return "bg-[#FF6262]"; 
+    default:
+      return "bg-gray-200";
+  }
+}
 
 const HistoryCard = ({ checkData }: { checkData: CheckData }) => {
   return (
-    <Card className="my-4 py-0 bg-light rounded shadow-sm overflow-hidden">
+    <Card className={`my-4 py-0 bg-light rounded-lg border-0 shadow-sm overflow-hidden ${getColorClass(checkData.score)}`}>
       <div className="flex flex-row items-center">
         <div className="flex-grow">
           <CardHeader className="font-bold text-xl text-primary pb-0 text-white">{checkData.crop}</CardHeader>
           <CardContent className="text-sm text-gray-700 pt-2 text-white">
-            <div className="text-4xl">{formatToPercent(checkData.score)}</div>
+            <div className="text-4xl">{(checkData.score)}</div>
           </CardContent>
         </div>
         <div className="w-28 flex items-center justify-center px-2 py-4">

@@ -15,9 +15,9 @@
         { "name": "Cotton", "area_hectare": 2.0 }
       ],
       "checkData": [
-        { "crop": "Wheat", "score": 0.8 },
-        { "crop": "Rice", "score": 1 },
-        { "crop": "Wheat", "score": 0.5 }
+        { "crop": "Wheat", "score": "Medium" },
+        { "crop": "Rice", "score": "Good" },
+        { "crop": "Wheat", "score": "Poor" }
       ]
     },
     {
@@ -35,9 +35,9 @@
         { "name": "Cotton", "area_hectare": 4.0 }
       ],
       "checkData": [
-        { "crop": "Wheat", "score": 1 },
-        { "crop": "Rice", "score": 0.9 },
-        { "crop": "Wheat", "score": 0.6 }
+        { "crop": "Wheat", "score": "Good" },
+        { "crop": "Rice", "score": "Medium" },
+        { "crop": "Wheat", "score": "Poor" }
       ]
     }
   ]
