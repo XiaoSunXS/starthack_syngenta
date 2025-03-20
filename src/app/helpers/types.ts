@@ -6,9 +6,13 @@ export type Location = {
 export type Weather = {
     date: string;
     temperature: number;
+    temperatureMax: number;
+    temperatureMin: number;
     precipitation: number;
     humidity: number;
     windSpeed: number;
+    windDirection: number;
+    cloudCover: number;
     riskLevel: string;
 }
 
