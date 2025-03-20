@@ -7,7 +7,6 @@ import { fetchWeatherData } from './helpers/getData';
 import { Soil, Weather } from './helpers/types';
 import { CHHATTISGARH_LOCATION } from "./helpers/constants";
 import { fetchSoilData } from "./helpers/getMockData";
-import { SprayWindowsCard } from "./components/SprayWindowsCard";
 
 const FarmRiskDashboard = () => {
   // State management
@@ -52,13 +51,10 @@ const FarmRiskDashboard = () => {
   }
 
   return (
-      <>
       <SummarySection
         soilData={soilData}
         weatherData={weatherData}
       />
-      <SprayWindowsCard location={location} />
-    </>
   );
 };
 
