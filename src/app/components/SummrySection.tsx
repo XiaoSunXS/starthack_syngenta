@@ -20,7 +20,7 @@ export const SummarySection = ({
   const riskData = calculateRiskLevel(weatherData);
   
   return (
-    <div className="px-4 py-6 space-y-6">
+    <div className="px-4 pb-6 space-y-6">
       {/* Location Search */}
       <div className="bg-gray-100 rounded-full p-3 flex items-center mb-2">
         <span className="mr-2 text-gray-500">📍</span>

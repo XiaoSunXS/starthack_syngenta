@@ -14,7 +14,7 @@ export const FooterNavigationBar = ()=>
               <NavigationMenuItem>
                <Link href="/">
                <Button variant="ghost" size="icon" className="h-12 w-12">
-                    <Home className="h-10 w-10" />
+                    <Home className="h-12 w-12" />
                 </Button>
                 </Link>
               </NavigationMenuItem>
