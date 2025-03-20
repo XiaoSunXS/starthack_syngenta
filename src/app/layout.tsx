@@ -36,7 +36,9 @@ export default function RootLayout({
               className="h-12 w-auto"
             />
             <div>
-              <p className="text-sm">Nature-powered innovation to improve global farming</p>
+              <p className="text-sm">
+                Nature-powered innovation to improve global farming
+              </p>
             </div>
           </div>
         </header>
@@ -50,7 +52,7 @@ export default function RootLayout({
             <p>© {new Date().getFullYear()} Syngenta. All rights reserved.</p>
           </div>
         </footer>
-        
+
         {/* Mobile app-like sticky navigation bar with shadcn/ui */}
         <FooterNavigationBar />
       </body>

@@ -1,10 +1,14 @@
 "use client";
 
-import { useEffect, useState } from 'react';
-import { AnalysisSection } from './components/AnalysisSection';
-import { SummarySection } from './components/SummrySection';
-import { fetchDiseaseRisk, fetchSoilData, fetchWeatherData } from './helpers/getMockData';
-import { Disease, Soil, Weather } from './helpers/types';
+import { useEffect, useState } from "react";
+import { AnalysisSection } from "./components/AnalysisSection";
+import { SummarySection } from "./components/SummrySection";
+import {
+  fetchDiseaseRisk,
+  fetchSoilData,
+  fetchWeatherData,
+} from "./helpers/getMockData";
+import { Disease, Soil, Weather } from "./helpers/types";
 
 const FarmRiskDashboard = () => {
   // State management
@@ -15,7 +19,7 @@ const FarmRiskDashboard = () => {
   const [diseaseRisk, setDiseaseRisk] = useState<Disease>();
 
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('weather');
+  const [activeTab, setActiveTab] = useState("weather");
 
   // Load data when component mounts
   useEffect(() => {
@@ -25,7 +29,7 @@ const FarmRiskDashboard = () => {
         const [weather, soil, disease] = await Promise.all([
           fetchWeatherData(),
           fetchSoilData(),
-          fetchDiseaseRisk()
+          fetchDiseaseRisk(),
         ]);
 
         setWeatherData(weather);
@@ -41,23 +45,22 @@ const FarmRiskDashboard = () => {
   }, [location]);
 
   if (loading) {
-    return <div className="flex items-center justify-center h-64">Loading farm data...</div>;
+    return (
+      <div className="flex items-center justify-center h-64">
+        Loading farm data...
+      </div>
+    );
   }
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Farm Risk Visualization Dashboard</h1>
+      <h1 className="text-2xl font-bold mb-4">
+        Farm Risk Visualization Dashboard
+      </h1>
       <SummarySection
         soilData={soilData}
         weatherData={weatherData}
         diseaseRisk={diseaseRisk}
-      />
-      <AnalysisSection
-        soilData={soilData}
-        weatherData={weatherData}
-        diseaseRisk={diseaseRisk}
-        setActiveTab={setActiveTab}
-        activeTab={activeTab}
       />
     </div>
   );
