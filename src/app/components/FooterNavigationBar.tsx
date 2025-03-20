@@ -20,7 +20,7 @@ export const FooterNavigationBar = ()=>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/alerts" legacyBehavior passHref>
+                <Link href="/windows" legacyBehavior passHref>
                  <Button variant="ghost" size="icon" className="h-12 w-12">
                     <Clock className="h-6 w-6" />
                 </Button>
