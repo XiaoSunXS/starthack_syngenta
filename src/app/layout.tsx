@@ -29,7 +29,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
+       <img    
+              src="/phone_status_bar.png"
+              alt="phone_status"
+              className="h-12 w-auto ml-auto"/>
         <header className="bg-white text-white shadow-md border-b border-gray-100">
+       
           <div className="container mx-auto px-6">
             <img
               src="/syngenta_biologicals.png"
