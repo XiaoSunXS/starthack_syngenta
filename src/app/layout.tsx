@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { FooterNavigationBar } from "./components/FooterNavigationBar";
 import "./globals.css";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -28,12 +29,12 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
-        <header className="bg-white text-white p-4 shadow-md">
-          <div className="container mx-auto px-6 pt-4">
+        <header className="bg-white text-white shadow-md border-b border-gray-100">
+          <div className="container mx-auto px-6">
             <img
               src="/syngenta_biologicals.png"
               alt="Syngenta Logo"
-              className="h-12 w-auto"
+              className="h-12 w-auto ml-auto"
             />
           </div>
         </header>
