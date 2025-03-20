@@ -17,7 +17,7 @@
       "checkData": [
         { "crop": "Wheat", "score": "Medium" },
         { "crop": "Rice", "score": "Good" },
-        { "crop": "Wheat", "score": "Poor" }
+        { "crop": "Cotton", "score": "Poor" }
       ]
     },
     {
@@ -37,7 +37,7 @@
       "checkData": [
         { "crop": "Wheat", "score": "Good" },
         { "crop": "Rice", "score": "Medium" },
-        { "crop": "Wheat", "score": "Poor" }
+        { "crop": "Cotton", "score": "Poor" }
       ]
     }
   ]
