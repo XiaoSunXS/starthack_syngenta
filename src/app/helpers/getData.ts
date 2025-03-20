@@ -80,3 +80,24 @@ export const fetchDiseaseData = async ({ date = today, location = CHHATTISGARH_L
   
   
   
+export const fetchSprayWindowsData = async ({ location = CHHATTISGARH_LOCATION, date = today, crop = 'generic' }: { location?: Location, crop?: string, date?: Date } = {}) => {
+  console.log('inside fetchSprayWindowsData');
+
+  // Get today's date and 10 days in the future
+  const tomorrow = new Date(date.getTime() + 86400000);
+
+  const startDate = formatDate(date);
+  const endDate = formatDate(tomorrow);
+
+  const url = `/api/cehub/spray-windows?latitude=${location.lat}&longitude=${location.lng}&startDate=${startDate}&endDate=${endDate}&crop=${crop}`;
+
+  console.log('At fetchSprayWindowsData, Fetching from URL:', url);
+
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    throw new Error(`Failed to fetch spray windows data: ${response.status}`);
+  }
+
+  return await response.json();
+};
