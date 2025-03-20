@@ -8,6 +8,8 @@ import { Thermometer, Droplets, Wind, AlertTriangle } from "lucide-react";
 import { fetchDiseaseRisk, fetchSoilData, fetchWeatherData } from '../helpers/getMockData';
 import { getRiskColor } from '../helpers/getRiskColor';
 import { Disease, Soil, Weather } from '../helpers/types';
+import { SummaryCard } from '../components/SummaryCard';
+import { SummarySection } from './SummrySection';
 
 const FarmRiskDashboard = () => {
   // State management
@@ -43,8 +45,6 @@ const FarmRiskDashboard = () => {
     loadData();
   }, [location]);
 
-
-
   if (loading) {
     return <div className="flex items-center justify-center h-64">Loading farm data...</div>;
   }
@@ -52,61 +52,7 @@ const FarmRiskDashboard = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Farm Risk Visualization Dashboard</h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-        {/* Weather Summary Card */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Current Weather</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center">
-                <Thermometer className="mr-2 text-red-500" />
-                <span>{weatherData[0].temperature}°C</span>
-              </div>
-              <div className="flex items-center">
-                <Droplets className="mr-2 text-blue-500" />
-                <span>{weatherData[0].humidity}%</span>
-              </div>
-              <div className="flex items-center">
-                <Wind className="mr-2 text-gray-500" />
-                <span>{weatherData[0].windSpeed} m/s</span>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-
-        {/* Soil Summary Card */}
-        {!!soilData && <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Soil Condition</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div>
-              <p><strong>Type:</strong> {soilData.soilType}</p>
-              <p><strong>pH:</strong> {soilData.pH}</p>
-              <p><strong>Moisture (0-10cm):</strong> {soilData.moisture[0].value}%</p>
-            </div>
-          </CardContent>
-        </Card>}
-
-        {/* Disease Risk Summary Card */}
-        <Card>
-          <CardHeader className="pb-2">
-            <CardTitle className="text-lg">Disease Risk</CardTitle>
-          </CardHeader>
-          {!!diseaseRisk && <CardContent>
-            <div className="flex items-center">
-              <AlertTriangle className={`mr-2 ${getRiskColor(diseaseRisk.diseases[0].riskLevel)}`} />
-              <span className="font-semibold">Primary Risk: {diseaseRisk.diseases[0].name}</span>
-            </div>
-            <p className={`mt-1 ${getRiskColor(diseaseRisk.diseases[0].riskLevel)}`}>
-              Risk Level: {diseaseRisk.diseases[0].riskLevel}
-            </p>
-          </CardContent>}
-        </Card>
-      </div>
+      <SummarySection soilData={soilData} weatherData={weatherData} diseaseRisk={diseaseRisk} />
 
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="mb-4">
