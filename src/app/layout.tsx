@@ -48,11 +48,11 @@ export default function RootLayout({
           {children}
         </main>
 
-        <footer className="bg-[var(--footer-bg)] text-white p-4 mt-auto">
+        {/* <footer className="bg-[var(--footer-bg)] text-white p-4 mt-auto">
           <div className="container mx-auto px-4 text-center">
             <p>© {new Date().getFullYear()} Syngenta. All rights reserved.</p>
           </div>
-        </footer>
+        </footer> */}
 
         {/* Mobile app-like sticky navigation bar with shadcn/ui */}
         <FooterNavigationBar />
