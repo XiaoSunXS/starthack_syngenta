@@ -9,7 +9,8 @@ import { fetchSoilData } from "./helpers/getMockData";
 
 const FarmRiskDashboard = () => {
   // State management
-  const [location, setLocation] = useState(CHHATTISGARH_LOCATION); // Default: Chhattisgarh
+  const location = CHHATTISGARH_LOCATION;
+  // const [location, setLocation] = useState(CHHATTISGARH_LOCATION); // Default: Chhattisgarh
   const [weatherData, setWeatherData] = useState<Weather[]>([]);
   const [soilData, setSoilData] = useState<Soil>();
   const [farmerLocation, setFarmerLocation] = useState<string>("Punjab, India");
