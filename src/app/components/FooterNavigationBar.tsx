@@ -4,7 +4,7 @@ import {
   NavigationMenuItem,
   NavigationMenuList
 } from "@/components/ui/navigation-menu";
-import { BookCheck, CircleUser, Home, ShieldAlert, Video, VideoIcon } from "lucide-react";
+import { CircleUser, Clapperboard, Clock, Home, Sprout } from "lucide-react";
 import Link from "next/link";
 
 export const FooterNavigationBar = ()=>       
@@ -22,7 +22,7 @@ export const FooterNavigationBar = ()=>
               <NavigationMenuItem>
                 <Link href="/alerts" legacyBehavior passHref>
                  <Button variant="ghost" size="icon" className="h-12 w-12">
-                    <ShieldAlert className="h-6 w-6" />
+                    <Clock className="h-6 w-6" />
                 </Button>
                 </Link>
               </NavigationMenuItem>
@@ -32,7 +32,7 @@ export const FooterNavigationBar = ()=>
               <NavigationMenuItem>
                 <Link href="/history" legacyBehavior passHref>
                  <Button variant="ghost" size="icon" className="h-12 w-12">
-                    <BookCheck className="h-6 w-6" />
+                    <Sprout className="h-6 w-6" />
                 </Button>
                 </Link>
               </NavigationMenuItem>
@@ -40,7 +40,7 @@ export const FooterNavigationBar = ()=>
               <NavigationMenuItem>
                 <Link href="/reels" legacyBehavior passHref>
                 <Button variant="ghost" size="icon" className="h-12 w-12">
-                    <Video className="h-6 w-6" />
+                    <Clapperboard className="h-6 w-6" />
                 </Button>
                 </Link>
               </NavigationMenuItem>
