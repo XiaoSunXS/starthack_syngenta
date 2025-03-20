@@ -36,3 +36,23 @@ export type Disease = {
         risk: number;
     }[];
 }
+
+export type Crop = {
+    name: string;
+    area_hectare: number;
+};
+
+export type Farmer = {
+    first_name: string;
+    last_name: string;
+    location: string;
+    latitude: number;
+    longitude: number;
+    country: string;
+    language: string;
+    crops: Crop[];
+};
+
+export type FarmersData = {
+    farmers: Farmer[];
+};

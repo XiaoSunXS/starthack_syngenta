@@ -1,4 +1,5 @@
 import { formatDate, today } from "./dates";
+import fs from "fs/promises";
 
 
 // Mock function to simulate API calls (in a real app, these would be actual API calls)
@@ -76,3 +77,5 @@ export const fetchDiseaseRisk = async () => {
 
     return mockDiseaseRisk;
 };
+
+
