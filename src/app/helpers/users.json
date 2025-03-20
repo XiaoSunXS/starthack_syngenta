@@ -1,0 +1,99 @@
+{
+  "farmers": [
+    {
+      "first_name": "Ramesh",
+      "last_name": "Yadav",
+      "location": "Varanasi, Uttar Pradesh",
+      "latitude": 25.3176,
+      "longitude": 82.9739,
+      "country": "India",
+      "language": "Hindi",
+      "crops": [
+        {
+          "name": "Wheat",
+          "area_hectare": 4.5
+        },
+        {
+          "name": "Sugarcane",
+          "area_hectare": 2.0
+        }
+      ]
+    },
+    {
+      "first_name": "Suresh",
+      "last_name": "Patil",
+      "location": "Pune, Maharashtra",
+      "latitude": 18.5204,
+      "longitude": 73.8567,
+      "country": "India",
+      "language": "Marathi",
+      "crops": [
+        {
+          "name": "Rice",
+          "area_hectare": 3.2
+        },
+        {
+          "name": "Onion",
+          "area_hectare": 1.5
+        }
+      ]
+    },
+    {
+      "first_name": "Amit",
+      "last_name": "Singh",
+      "location": "Patna, Bihar",
+      "latitude": 25.5941,
+      "longitude": 85.1376,
+      "country": "India",
+      "language": "Hindi",
+      "crops": [
+        {
+          "name": "Maize",
+          "area_hectare": 5.0
+        },
+        {
+          "name": "Pulses",
+          "area_hectare": 2.8
+        }
+      ]
+    },
+    {
+      "first_name": "Rajesh",
+      "last_name": "Sharma",
+      "location": "Jaipur, Rajasthan",
+      "latitude": 26.9124,
+      "longitude": 75.7873,
+      "country": "India",
+      "language": "Rajasthani",
+      "crops": [
+        {
+          "name": "Bajra",
+          "area_hectare": 6.5
+        },
+        {
+          "name": "Mustard",
+          "area_hectare": 3.0
+        }
+      ]
+    },
+    {
+      "first_name": "Manoj",
+      "last_name": "Reddy",
+      "location": "Hyderabad, Telangana",
+      "latitude": 17.3850,
+      "longitude": 78.4867,
+      "country": "India",
+      "language": "Telugu",
+      "crops": [
+        {
+          "name": "Cotton",
+          "area_hectare": 4.2
+        },
+        {
+          "name": "Groundnut",
+          "area_hectare": 3.7
+        }
+      ]
+    }
+  ]
+}
