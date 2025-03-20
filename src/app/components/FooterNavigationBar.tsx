@@ -22,21 +22,21 @@ export const FooterNavigationBar = ({}:{})=>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/products" legacyBehavior passHref>
+                <Link href="/alerts" legacyBehavior passHref>
                  <Button variant="ghost" size="icon" className="h-12 w-12">
                     <ShieldAlert className="h-6 w-6" />
                 </Button>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/services" legacyBehavior passHref>
+                <Link href="/history" legacyBehavior passHref>
                  <Button variant="ghost" size="icon" className="h-12 w-12">
                     <BookCheck className="h-6 w-6" />
                 </Button>
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
+                <Link href="/profile" legacyBehavior passHref>
                 <Button variant="ghost" size="icon" className="h-12 w-12">
                     <CircleUser className="h-6 w-6" />
                 </Button>
