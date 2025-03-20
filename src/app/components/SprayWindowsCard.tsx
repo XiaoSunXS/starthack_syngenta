@@ -46,14 +46,14 @@ const getSprayAdvice = (recommendationCode: string): string => {
 const getColorClass = (colorCode: string): string => {
   switch(colorCode) {
     case "#C2C76C":
-      return "bg-green-200";
+      return "bg-[#81C940]";
     case "#F2CD74":
-      return "bg-yellow-200";
+      return "bg-[#04CFCC]";
     case "#FFB400":
-      return "bg-red-200"; // no okay -> only poor
+      return "bg-[#BA2B01]"; // no okay -> only poor
     case "#FB5438":
     case "#E7B09C":
-      return "bg-red-200";
+      return "bg-[#BA2B01]";
     default:
       return "bg-gray-200";
   }
@@ -139,7 +139,7 @@ export const SprayWindowsCard = ({ location }: { location: Location }) => {
                 
                 {timeBlocks.map((block, blockIndex) => (
                   <div key={blockIndex} className="mb-4">
-                    <div className="text-sm text-gray-600 mb-1 flex items-center">
+                    <div className="text-sm text-[#818285] mb-1 flex items-center">
                       <Clock size={14} className="mr-1" />
                       {block.label} ({block.hours[0]}:00 - {block.hours[block.hours.length-1]}:59)
                     </div>
@@ -152,7 +152,7 @@ export const SprayWindowsCard = ({ location }: { location: Location }) => {
                               className={`h-8 rounded ${getColorClass(window.colorCode)} hover:opacity-75 cursor-pointer flex items-center justify-center`}
                               title={`${formatTime(window.date)}: ${getSprayAdvice(window.recommendationCode)}${window.constraintCodes ? `\nConstraints: ${window.constraintCodes}` : ''}`}
                             >
-                              <span className="text-xs font-medium">{hour}:00</span>
+                              <span className="text-xs font-medium text-white">{hour}:00</span>
                             </div>
                           </div>
                         );
@@ -170,15 +170,15 @@ export const SprayWindowsCard = ({ location }: { location: Location }) => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             <div className="flex gap-4">
               <div className="flex items-center">
-                <div className="w-4 h-4 bg-green-200 rounded mr-2"></div>
+                <div className="w-4 h-4 bg-[#81C940] rounded mr-2"></div>
                 <span>✅ Excellent</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 bg-yellow-200 rounded mr-2"></div>
+                <div className="w-4 h-4 bg-[#04CFCC] rounded mr-2"></div>
                 <span>🙂 Good</span>
               </div>
               <div className="flex items-center">
-                <div className="w-4 h-4 bg-red-200 rounded mr-2"></div>
+                <div className="w-4 h-4 bg-[#BA2B01] rounded mr-2"></div>
                 <span>❌ Poor</span>
               </div>
             </div>

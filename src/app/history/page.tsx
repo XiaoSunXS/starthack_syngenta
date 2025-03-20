@@ -15,11 +15,11 @@ const getPicture = (crop: string)=>{
 const getColorClass = (state: string): string => {
   switch(state) {
     case "Good":
-      return "bg-[#0A6312]";
+      return "bg-[#81C940]";
     case "Medium":
-      return "bg-[#63B9FF]";
+      return "bg-[#04CFCC]";
     case "Poor":
-      return "bg-[#FF6262]"; 
+      return "bg-[#BA2B01]"; 
     default:
       return "bg-gray-200";
   }
@@ -57,7 +57,7 @@ const CropSpecificCheck = ({checkData, selectedCrop, setSelectedCrop}:{checkData
    {checkData.score == 'Good' && <p className="text-lg pt-6 pl-2">🙂 Your crop looks great! </p>}
    {checkData.score == 'Medium' && <p className="text-lg pt-6 pl-2">😳 Your crop is doing okay, but could use some attention. </p>}
    {checkData.score == 'Poor' && 
-      <div className="text-lg pt-4 pl-2">
+      <div className="text-lg pt-4 pl-2 text-[#BA2B01]">
        <p className="py-4">1. More water required 💧</p>  
        <p className="py-4">2. Add 10g of Provivi</p>  
        <p className="py-4">3. No need for heavy pesticide use unless pest pressure rises</p>  

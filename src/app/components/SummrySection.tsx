@@ -36,7 +36,7 @@ export const SummarySection = ({
       {/* Temperature Card */}
       <div>
         <h2 className="text-xl font-medium mb-3">Temperature</h2>
-        <div className="bg-indigo-900 rounded-xl p-4 text-white flex justify-between items-center">
+        <div className="bg-[#04CFCC] rounded-xl p-4 text-white flex justify-between items-center">
           <div>
             <div className="text-6xl font-semibold">{Math.round(currentWeather.temperature)}°</div>
             <div className="text-sm mt-1">
@@ -61,7 +61,7 @@ export const SummarySection = ({
       {soilData && (
         <div>
             <h2 className="text-xl font-medium mb-3">Soil Health</h2>
-            <div className="bg-amber-600 rounded-xl p-4 text-white flex justify-between items-center">
+            <div className="bg-[#264500] rounded-xl p-4 text-white flex justify-between items-center">
             <div>
                 <div className="text-6xl font-semibold">80%</div>
                 <div className="mt-2">Excellent</div>
@@ -84,7 +84,7 @@ export const SummarySection = ({
       {/* Risk Card */}
       <div>
         <h2 className="text-xl font-medium mb-3">Risk</h2>
-        <div className="bg-red-500 rounded-xl p-4 text-white flex justify-between items-center">
+        <div className="bg-[#BA2B01] rounded-xl p-4 text-white flex justify-between items-center">
           <div>
             <div className="text-6xl font-semibold">{riskData.riskPercentage}%</div>
             <div className="mt-2">{riskData.riskMessage}</div>
