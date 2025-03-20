@@ -1,5 +1,5 @@
 import { AlertTriangle, Droplets, Thermometer, Wind } from "lucide-react";
-import { SummaryCard } from '../components/SummaryCard';
+import { SummaryCard } from './SummaryCard';
 import { getRiskColor } from '../helpers/getRiskColor';
 import { Disease, Soil, Weather } from '../helpers/types';
 
