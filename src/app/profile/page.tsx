@@ -54,6 +54,7 @@ export function FarmerProfile({ farmer }: { farmer: Farmer }) {
             <select
               className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
               value={farmer.farming_method}
+              onChange={()=>{}}
             >
               <option>{farmer.farming_method}</option>
               <option>Conventional</option>
@@ -72,6 +73,7 @@ export function FarmerProfile({ farmer }: { farmer: Farmer }) {
               type="number"
               value={farmer.crops.reduce((sum, crop) => sum + crop.area_hectare, 0).toFixed(2)}
               className="mt-1 block w-full px-3 py-2 bg-gray-100 rounded-md"
+              onChange={()=>{}}
             />
           </div>
         </div>
