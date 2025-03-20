@@ -46,7 +46,6 @@ export async function GET(request: NextRequest) {
         }
 
         const data = await response.json();
-        console.log('data from spray-windows route', data);
         return NextResponse.json(data);
     } catch (error) {
         console.error('Error in spray-windows route:', error);

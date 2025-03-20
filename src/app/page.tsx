@@ -7,6 +7,7 @@ import { fetchWeatherData } from './helpers/getData';
 import { Soil, Weather } from './helpers/types';
 import { CHHATTISGARH_LOCATION } from "./helpers/constants";
 import { fetchSoilData } from "./helpers/getMockData";
+import { SprayWindowsCard } from "./components/SprayWindowsCard";
 
 const FarmRiskDashboard = () => {
   // State management
@@ -20,7 +21,6 @@ const FarmRiskDashboard = () => {
 
   // Load data when component mounts
   useEffect(() => {
-    console.log('inside useEffect TODO loadData');
     const loadData = async () => {
       setLoading(true);
       try {
@@ -31,7 +31,6 @@ const FarmRiskDashboard = () => {
 
         console.log('weather', weather);
         console.log('soil', soil);
-
         setWeatherData(weather);
         setSoilData(soil);
       } catch (error) {
@@ -53,10 +52,13 @@ const FarmRiskDashboard = () => {
   }
 
   return (
+      <>
       <SummarySection
         soilData={soilData}
         weatherData={weatherData}
       />
+      <SprayWindowsCard location={location} />
+    </>
   );
 };
 
