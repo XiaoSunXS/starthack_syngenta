@@ -27,13 +27,7 @@ export const FooterNavigationBar = ()=>
                 </Link>
               </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <Link href="/reels" legacyBehavior passHref>
-                <Button variant="ghost" size="icon" className="h-12 w-12">
-                    <Video className="h-6 w-6" />
-                </Button>
-                </Link>
-              </NavigationMenuItem>
+
 
               <NavigationMenuItem>
                 <Link href="/history" legacyBehavior passHref>
@@ -43,6 +37,13 @@ export const FooterNavigationBar = ()=>
                 </Link>
               </NavigationMenuItem>
 
+              <NavigationMenuItem>
+                <Link href="/reels" legacyBehavior passHref>
+                <Button variant="ghost" size="icon" className="h-12 w-12">
+                    <Video className="h-6 w-6" />
+                </Button>
+                </Link>
+              </NavigationMenuItem>
 
 
               <NavigationMenuItem>
