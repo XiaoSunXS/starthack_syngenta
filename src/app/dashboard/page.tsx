@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 // TODO: define components in the components folder OR use shadcn/ui
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'; 
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { Thermometer, Droplets, Wind,  AlertTriangle } from "lucide-react";
+import { Thermometer, Droplets, Wind, AlertTriangle } from "lucide-react";
 
 const FarmRiskDashboard = () => {
   // State management
@@ -13,13 +13,13 @@ const FarmRiskDashboard = () => {
   const [diseaseRisk, setDiseaseRisk] = useState(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('weather');
-  
+
   // Create dates for API calls (today and 5 days ahead)
   const today = new Date();
   const fiveDaysLater = new Date();
   fiveDaysLater.setDate(today.getDate() + 5);
-  
-  const formatDate = (date) => {
+
+  const formatDate = (date: Date) => {
     return date.toISOString().split('T')[0];
   };
 
@@ -27,7 +27,7 @@ const FarmRiskDashboard = () => {
   const fetchWeatherData = async () => {
     // This would be a real API call in production
     // Example: fetch(`https://services.cehub.syngenta-ais.com/api/Forecast/ShortRangeForecastDaily?latitude=${location.lat}&longitude=${location.lng}&startDate=${formatDate(today)}&endDate=${formatDate(fiveDaysLater)}&supplier=Meteoblue&format=json&ApiKey=d4f087c7-7efc-41b4-9292-0f22b6199215`)
-    
+
     // Mock data for demonstration
     const mockWeatherData = [
       { date: formatDate(today), temperature: 22, precipitation: 0, humidity: 45, windSpeed: 8, riskLevel: 'Low' },
@@ -37,7 +37,7 @@ const FarmRiskDashboard = () => {
       { date: formatDate(new Date(today.getTime() + 86400000 * 4)), temperature: 19, precipitation: 5, humidity: 70, windSpeed: 8, riskLevel: 'Medium' },
       { date: formatDate(new Date(today.getTime() + 86400000 * 5)), temperature: 21, precipitation: 0, humidity: 55, windSpeed: 6, riskLevel: 'Low' },
     ];
-    
+
     return mockWeatherData;
   };
 
@@ -48,7 +48,7 @@ const FarmRiskDashboard = () => {
     //   headers: { 'Content-Type': 'application/json', 'ApiKey': '7b29a207a0de' },
     //   body: JSON.stringify({ latitude: location.lat, longitude: location.lng })
     // })
-    
+
     // Mock data for demonstration
     const mockSoilData = {
       soilType: 'Clay Loam',
@@ -68,14 +68,14 @@ const FarmRiskDashboard = () => {
         calcium: 1200
       }
     };
-    
+
     return mockSoilData;
   };
 
   const fetchDiseaseRisk = async () => {
     // This would be a real API call in production
     // Example: fetch(`https://services.cehub.syngenta-ais.com/api/DiseaseRisk/CornRisk?latitude=${location.lat}&longitude=${location.lng}&startDate=${formatDate(today)}&endDate=${formatDate(fiveDaysLater)}&ApiKey=d4f087c7-7efc-41b4-9292-0f22b6199215`)
-    
+
     // Mock data for demonstration
     const mockDiseaseRisk = {
       crop: 'Corn',
@@ -94,7 +94,7 @@ const FarmRiskDashboard = () => {
         { date: formatDate(new Date(today.getTime() + 86400000 * 5)), risk: 0.5 },
       ]
     };
-    
+
     return mockDiseaseRisk;
   };
 
@@ -108,7 +108,7 @@ const FarmRiskDashboard = () => {
           fetchSoilData(),
           fetchDiseaseRisk()
         ]);
-        
+
         setWeatherData(weather);
         setSoilData(soil);
         setDiseaseRisk(disease);
@@ -118,7 +118,7 @@ const FarmRiskDashboard = () => {
         setLoading(false);
       }
     };
-    
+
     loadData();
   }, [location]);
 
@@ -136,7 +136,7 @@ const FarmRiskDashboard = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">Farm Risk Visualization Dashboard</h1>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
         {/* Weather Summary Card */}
         <Card>
@@ -160,7 +160,7 @@ const FarmRiskDashboard = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         {/* Soil Summary Card */}
         <Card>
           <CardHeader className="pb-2">
@@ -174,7 +174,7 @@ const FarmRiskDashboard = () => {
             </div>
           </CardContent>
         </Card>
-        
+
         {/* Disease Risk Summary Card */}
         <Card>
           <CardHeader className="pb-2">
@@ -191,14 +191,14 @@ const FarmRiskDashboard = () => {
           </CardContent>
         </Card>
       </div>
-      
+
       <Tabs value={activeTab} onValueChange={setActiveTab}>
         <TabsList className="mb-4">
           <TabsTrigger value="weather">Weather Forecast</TabsTrigger>
           <TabsTrigger value="soil">Soil Analysis</TabsTrigger>
           <TabsTrigger value="disease">Disease Risk</TabsTrigger>
         </TabsList>
-        
+
         <TabsContent value="weather">
           <Card>
             <CardHeader>
@@ -219,7 +219,7 @@ const FarmRiskDashboard = () => {
                   </LineChart>
                 </ResponsiveContainer>
               </div>
-              
+
               <div className="mt-6">
                 <h3 className="font-semibold mb-2">Weather Risk Assessment</h3>
                 <div className="overflow-x-auto">
@@ -248,7 +248,7 @@ const FarmRiskDashboard = () => {
             </CardContent>
           </Card>
         </TabsContent>
-        
+
         <TabsContent value="soil">
           <Card>
             <CardHeader>
@@ -262,7 +262,7 @@ const FarmRiskDashboard = () => {
                   <p><strong>USDA Texture Class:</strong> {soilData.texture}</p>
                   <p><strong>Organic Matter:</strong> {soilData.organicMatter}%</p>
                   <p><strong>pH Level:</strong> {soilData.pH}</p>
-                  
+
                   <h3 className="font-semibold mt-4 mb-3">Soil Moisture by Depth</h3>
                   <div className="h-60">
                     <ResponsiveContainer width="100%" height="100%">
@@ -276,7 +276,7 @@ const FarmRiskDashboard = () => {
                     </ResponsiveContainer>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="font-semibold mb-3">Soil Nutrients (ppm)</h3>
                   <div className="h-60">
@@ -294,11 +294,11 @@ const FarmRiskDashboard = () => {
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
-                  
+
                   <div className="mt-4 p-4 bg-yellow-50 rounded border border-yellow-200">
                     <h3 className="font-semibold text-yellow-800 mb-2">Soil Health Assessment</h3>
                     <p className="text-yellow-700">
-                      This soil has adequate nutrients for corn growth but may benefit from additional nitrogen application. 
+                      This soil has adequate nutrients for corn growth but may benefit from additional nitrogen application.
                       The clay loam texture provides good water retention but may have drainage issues during heavy rain periods.
                     </p>
                   </div>
@@ -307,7 +307,7 @@ const FarmRiskDashboard = () => {
             </CardContent>
           </Card>
         </TabsContent>
-        
+
         <TabsContent value="disease">
           <Card>
             <CardHeader>
@@ -328,7 +328,7 @@ const FarmRiskDashboard = () => {
                       </LineChart>
                     </ResponsiveContainer>
                   </div>
-                  
+
                   <div className="mt-4 p-4 bg-red-50 rounded border border-red-200">
                     <h3 className="font-semibold text-red-800 mb-2">Risk Alert</h3>
                     <p className="text-red-700">
@@ -337,7 +337,7 @@ const FarmRiskDashboard = () => {
                     </p>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="font-semibold mb-3">Disease Risk Assessment</h3>
                   <div className="overflow-x-auto">
@@ -362,7 +362,7 @@ const FarmRiskDashboard = () => {
                       </tbody>
                     </table>
                   </div>
-                  
+
                   <h3 className="font-semibold mt-4 mb-2">Risk Factors</h3>
                   <ul className="list-disc pl-5 space-y-1">
                     <li>High humidity (85%) forecasted in 3 days</li>
