@@ -3,12 +3,9 @@
 import { useEffect, useState } from "react";
 import { AnalysisSection } from "./components/AnalysisSection";
 import { SummarySection } from "./components/SummrySection";
-import {
-  fetchDiseaseRisk,
-  fetchSoilData,
-  fetchWeatherData,
-} from "./helpers/getMockData";
-import { Disease, Soil, Weather } from "./helpers/types";
+import { fetchDiseaseRisk, fetchSoilData } from './helpers/getMockData';
+import { fetchWeatherData } from './helpers/getData';
+import { Disease, Soil, Weather } from './helpers/types';
 
 const FarmRiskDashboard = () => {
   // State management
