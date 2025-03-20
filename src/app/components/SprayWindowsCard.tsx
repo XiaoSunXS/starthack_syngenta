@@ -83,7 +83,6 @@ const groupWindowsIntoTimeBlocks = (windows: SprayWindow[]): TimeBlock[] => {
 export const SprayWindowsCard = ({ location }: { location: Location }) => {
     const [sprayData, setSprayData] = useState<SprayWindow[]>([]);
     const [loading, setLoading] = useState(true);
-    const [viewMode, setViewMode] = useState<'grouped' | 'timeline'>('grouped');
     
     useEffect(() => {
       const fetchSprayWindows = async () => {
@@ -122,59 +121,11 @@ export const SprayWindowsCard = ({ location }: { location: Location }) => {
             Spray Windows
           </h3>
           <div className="flex items-center text-sm">
-            <button 
-              className={`px-2 py-1 rounded ${viewMode === 'timeline' ? 'bg-blue-100' : ''}`}
-              onClick={() => setViewMode('timeline')}
-            >
-              Timeline
-            </button>
-            <button 
-              className={`px-2 py-1 rounded ml-2 ${viewMode === 'grouped' ? 'bg-blue-100' : ''}`}
-              onClick={() => setViewMode('grouped')}
-            >
-              Grouped
-            </button>
+
           </div>
         </div>
         
-        {viewMode === 'timeline' ? (
-          // Original timeline view with hour labels
-          Object.entries(groupedByDate).map(([date, windows]) => (
-            <div key={date} className="mb-6">
-              <div className="font-medium mb-2">
-                <Calendar className="inline mr-2" size={16} />
-                {formatDateForDisplay(date)}
-              </div>
-              
-              <div className="relative">
-                <div className="grid grid-cols-24 gap-1">
-                  {windows.map((window, i) => {
-                    const hour = new Date(window.date).getHours();
-                    return (
-                      <div key={i} className="relative">
-                        <div
-                          className={`h-8 rounded ${getColorClass(window.colorCode)} hover:opacity-75 cursor-pointer flex items-center justify-center`}
-                          title={`${formatTime(window.date)}: ${getSprayAdvice(window.recommendationCode)}${window.constraintCodes ? `\nConstraints: ${window.constraintCodes}` : ''}`}
-                        >
-                          <span className="text-xs">{hour}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                
-                {/* Time indicators */}
-                <div className="flex justify-between text-xs text-gray-500 mt-1">
-                  <span>12 AM</span>
-                  <span>6 AM</span>
-                  <span>12 PM</span>
-                  <span>6 PM</span>
-                  <span>12 AM</span>
-                </div>
-              </div>
-            </div>
-          ))
-        ) : (
+        {(
           // Grouped view by time blocks
           Object.entries(groupedByDate).map(([date, windows]) => {
             const timeBlocks = groupWindowsIntoTimeBlocks(windows);
@@ -195,7 +146,6 @@ export const SprayWindowsCard = ({ location }: { location: Location }) => {
                     <div className="grid grid-cols-6 gap-1">
                       {block.windows.map((window, i) => {
                         const hour = new Date(window.date).getHours();
-                        
                         return (
                           <div key={i} className="relative">
                             <div
