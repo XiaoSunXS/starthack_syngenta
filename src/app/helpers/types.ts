@@ -47,11 +47,9 @@ export type Crop = {
     area_hectare: number;
 };
 
-export type HistoryData = {
-    date: string;
-    amount: number;
+export type CheckData = {
     crop: string,
-    biologicals: string
+    score: number
 }
 
 export type Farmer = {
@@ -64,7 +62,7 @@ export type Farmer = {
     language: string;
     farming_method: string;
     crops: Crop[];
-    historyData: HistoryData[];
+    checkData: CheckData[];
 };
 
 export type FarmersData = {
