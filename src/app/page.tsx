@@ -1,16 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from 'recharts';
-import { Thermometer, Droplets, Wind, AlertTriangle } from "lucide-react";
-import { fetchDiseaseRisk, fetchSoilData, fetchWeatherData } from './helpers/getMockData';
-import { getRiskColor } from './helpers/getRiskColor';
-import { Disease, Soil, Weather } from './helpers/types';
-import { SummaryCard } from './components/SummaryCard';
-import { SummarySection } from './components/SummrySection';
+import { useEffect, useState } from 'react';
 import { AnalysisSection } from './components/AnalysisSection';
+import { SummarySection } from './components/SummrySection';
+import { fetchDiseaseRisk, fetchSoilData, fetchWeatherData } from './helpers/getMockData';
+import { Disease, Soil, Weather } from './helpers/types';
 
 const FarmRiskDashboard = () => {
   // State management

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { FooterNavigationBar } from "./components/FooterNavigationBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,7 +41,7 @@ export default function RootLayout({
           </div>
         </header>
 
-        <main className="flex-grow container mx-auto p-4 px-4">
+        <main className="flex-grow container mx-auto p-4 px-4 pb-16">
           {children}
         </main>
 
@@ -49,6 +50,9 @@ export default function RootLayout({
             <p>© {new Date().getFullYear()} Syngenta. All rights reserved.</p>
           </div>
         </footer>
+        
+        {/* Mobile app-like sticky navigation bar with shadcn/ui */}
+        <FooterNavigationBar />
       </body>
     </html>
   );
