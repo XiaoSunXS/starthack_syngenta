@@ -1,14 +1,10 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Globe, Languages, Leaf, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Farmer, FarmersData } from "../helpers/types";
 export function FarmerProfile({ farmer }: { farmer: Farmer }) {
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
-      <h1 className="text-lg font-bold mb-6">Your Farm Information</h1>
-      
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Personal Information */}
         <div className="col-span-2">

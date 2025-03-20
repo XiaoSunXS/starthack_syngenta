@@ -10,14 +10,20 @@
       "language": "Hindi",
       "farming_method": "Organic",
       "crops": [
-        {
-          "name": "Wheat",
-          "area_hectare": 4.5
-        },
-        {
-          "name": "Sugarcane",
-          "area_hectare": 2.0
-        }
+        { "name": "Wheat", "area_hectare": 4.5 },
+        { "name": "Sugarcane", "area_hectare": 2.0 }
+      ],
+      "historyData": [
+        { "date": "2024-03-01", "amount": 5.2, "crop": "Wheat", "biologicals": "Neem Extract" },
+        { "date": "2024-02-15", "amount": 3.8, "crop": "Sugarcane", "biologicals": "Trichoderma" },
+        { "date": "2023-12-20", "amount": 6.1, "crop": "Wheat", "biologicals": "Beauveria Bassiana" },
+        { "date": "2023-10-10", "amount": 4.0, "crop": "Sugarcane", "biologicals": "Azotobacter" },
+        { "date": "2023-07-05", "amount": 5.5, "crop": "Wheat", "biologicals": "Rhizobium" },
+        { "date": "2023-05-12", "amount": 4.3, "crop": "Sugarcane", "biologicals": "Mycorrhiza" },
+        { "date": "2023-03-22", "amount": 6.0, "crop": "Wheat", "biologicals": "Pseudomonas" },
+        { "date": "2022-12-18", "amount": 3.9, "crop": "Sugarcane", "biologicals": "Bacillus Subtilis" },
+        { "date": "2022-10-30", "amount": 5.7, "crop": "Wheat", "biologicals": "Azospirillum" },
+        { "date": "2022-08-25", "amount": 4.8, "crop": "Sugarcane", "biologicals": "Neem Extract" }
       ]
     },
     {
@@ -30,74 +36,20 @@
       "language": "Marathi",
       "farming_method": "Organic",
       "crops": [
-        {
-          "name": "Rice",
-          "area_hectare": 3.2
-        },
-        {
-          "name": "Onion",
-          "area_hectare": 1.5
-        }
-      ]
-    },
-    {
-      "first_name": "Amit",
-      "last_name": "Singh",
-      "location": "Patna, Bihar",
-      "latitude": 25.5941,
-      "longitude": 85.1376,
-      "country": "India",
-      "language": "Hindi",
-      "farming_method": "Organic",
-      "crops": [
-        {
-          "name": "Maize",
-          "area_hectare": 5.0
-        },
-        {
-          "name": "Pulses",
-          "area_hectare": 2.8
-        }
-      ]
-    },
-    {
-      "first_name": "Rajesh",
-      "last_name": "Sharma",
-      "location": "Jaipur, Rajasthan",
-      "latitude": 26.9124,
-      "longitude": 75.7873,
-      "country": "India",
-      "language": "Rajasthani",
-      "farming_method": "Organic",
-      "crops": [
-        {
-          "name": "Bajra",
-          "area_hectare": 6.5
-        },
-        {
-          "name": "Mustard",
-          "area_hectare": 3.0
-        }
-      ]
-    },
-    {
-      "first_name": "Manoj",
-      "last_name": "Reddy",
-      "location": "Hyderabad, Telangana",
-      "latitude": 17.3850,
-      "longitude": 78.4867,
-      "country": "India",
-      "language": "Telugu",
-      "farming_method": "Organic",
-      "crops": [
-        {
-          "name": "Cotton",
-          "area_hectare": 4.2
-        },
-        {
-          "name": "Groundnut",
-          "area_hectare": 3.7
-        }
+        { "name": "Rice", "area_hectare": 3.2 },
+        { "name": "Onion", "area_hectare": 1.5 }
+      ],
+      "historyData": [
+        { "date": "2024-03-05", "amount": 4.9, "crop": "Rice", "biologicals": "Rhizobium" },
+        { "date": "2024-01-20", "amount": 3.6, "crop": "Onion", "biologicals": "Azotobacter" },
+        { "date": "2023-11-15", "amount": 5.3, "crop": "Rice", "biologicals": "Mycorrhiza" },
+        { "date": "2023-09-10", "amount": 4.2, "crop": "Onion", "biologicals": "Neem Extract" },
+        { "date": "2023-07-22", "amount": 6.0, "crop": "Rice", "biologicals": "Bacillus Subtilis" },
+        { "date": "2023-06-05", "amount": 3.8, "crop": "Onion", "biologicals": "Trichoderma" },
+        { "date": "2023-04-30", "amount": 4.7, "crop": "Rice", "biologicals": "Beauveria Bassiana" },
+        { "date": "2023-02-18", "amount": 5.1, "crop": "Onion", "biologicals": "Azospirillum" },
+        { "date": "2022-12-08", "amount": 3.9, "crop": "Rice", "biologicals": "Pseudomonas" },
+        { "date": "2022-10-25", "amount": 4.5, "crop": "Onion", "biologicals": "Neem Extract" }
       ]
     }
   ]
