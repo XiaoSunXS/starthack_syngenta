@@ -5,10 +5,10 @@ import { FarmersData, CheckData } from "../helpers/types";
 import { Card, CardHeader, CardContent } from "@/components/ui/card";
 
 const getPicture = (crop: string)=>{
-  if (crop == 'Rice') return 'rice.jpg';
-  if (crop == 'Cotton') return 'cotton.jpeg';
+  if (crop == 'Rice') return 'rice_old.jpg';
+  if (crop == 'Cotton') return 'cotton_old.jpeg';
   
-  return 'wheat.jpg';
+  return 'wheat.jpeg';
 }
 
 
