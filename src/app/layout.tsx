@@ -29,17 +29,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}
       >
         <header className="bg-[var(--header-bg)] text-white p-4 shadow-md">
-          <div className="container mx-auto px-4 flex items-center gap-4">
+          <div className="container mx-auto px-4 gap-4">
             <img
-              src="/syngenta.png"
+              src="/syngenta_biologicals.png"
               alt="Syngenta Logo"
               className="h-12 w-auto"
             />
-            <div>
-              <p className="text-sm">
-                Nature-powered innovation to improve global farming
-              </p>
-            </div>
           </div>
         </header>
 

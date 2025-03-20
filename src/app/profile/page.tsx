@@ -10,13 +10,7 @@ export function FarmerProfile({ farmer }: { farmer: Farmer }) {
   return (
     <Card className="w-full">
       <CardContent className="pt-6">
-        <div className="flex flex-col items-center gap-4">
-          <Avatar className="h-20 w-20">
-            <AvatarFallback className="bg-green-100 text-green-800 text-lg">
-              {farmer.first_name[0]}{farmer.last_name[0]}
-            </AvatarFallback>
-          </Avatar>
-          
+        <div className="flex flex-col gap-4">          
           <h2 className="text-lg font-medium">{farmer.first_name} {farmer.last_name}</h2>
           
           <div className="grid grid-cols-3 gap-6 w-full mt-2">
