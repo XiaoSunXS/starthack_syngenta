@@ -2,7 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { Farmer, FarmersData } from "../helpers/types";
-export function FarmerProfile({ farmer }: { farmer: Farmer }) {
+
+export const FarmerProfile = ({ farmer }: { farmer: Farmer }) => {
   return (
     <div className="p-6 max-w-4xl mx-auto bg-white rounded-lg shadow-md">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
