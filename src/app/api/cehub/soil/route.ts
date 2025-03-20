@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
     // Construct URL for soil data
     const url = `${BASE_URL}/SoilAnalysis/GetSearchSoil`;
     
-    console.log('Fetching from URL:', url);
+    console.log('At soil route, Fetching from URL:', url);
     console.log('Request body:', requestBody);
     
     // Make the POST request

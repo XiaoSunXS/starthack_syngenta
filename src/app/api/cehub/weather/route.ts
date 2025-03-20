@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
         // Construct URL WITHOUT the API key in the query parameters
         const url = `${BASE_URL}/Forecast/ShortRangeForecastDaily?latitude=${latitude}&longitude=${longitude}&startDate=${startDate}&endDate=${endDate}&supplier=Meteoblue&measureLabel=${measures}&top=20&format=json`;
         
-        console.log('Fetching from URL:', url);
+        console.log('At weather route, Fetching from URL:', url);
         
         // Pass the API key as a header instead
         const response = await fetch(url, {
