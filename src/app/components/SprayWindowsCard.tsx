@@ -48,7 +48,8 @@ const getColorClass = (colorCode: string): string => {
     case "#C2C76C":
       return "bg-[#81C940]";
     case "#F2CD74":
-      return "bg-[#04CFCC]";
+    case "#AAB400":
+            return "bg-[#04CFCC]";
     case "#FFB400":
       return "bg-[#BA2B01]"; // no okay -> only poor
     case "#FB5438":
