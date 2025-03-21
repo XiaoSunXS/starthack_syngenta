@@ -18,9 +18,3 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 ## The task
 - this is a project in the context of STARTHACK 2025. We picked the Syngenta case: find solutions for farmers in India to take better decisions. A first step is to build an analytics tool. Secondary will be a simple AI model, e.g. a classification model based on the crop and date and location.
 
-
-## TODO: Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
